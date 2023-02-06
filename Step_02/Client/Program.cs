@@ -65,8 +65,8 @@ app.MapRazorPages();
 //app.MapControllers();
 
 // using Microsoft.AspNetCore.Builder;
-app.MapControllerRoute(
-	name: "default",
+app.MapControllerRoute
+	(name: "default",
 	pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
