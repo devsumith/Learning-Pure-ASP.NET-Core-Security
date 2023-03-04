@@ -10,6 +10,9 @@ public class MyApiController :
 	{
 	}
 
+	/// <summary>
+	/// Action
+	/// </summary>
 	[Microsoft.AspNetCore.Mvc.HttpGet]
 	public Microsoft.AspNetCore.Mvc.IActionResult Get()
 	{
@@ -19,6 +22,9 @@ public class MyApiController :
 		return Ok(value: result);
 	}
 
+	/// <summary>
+	/// Action
+	/// </summary>
 	[Microsoft.AspNetCore.Mvc.HttpPost]
 	public Microsoft.AspNetCore.Mvc.IActionResult Post()
 	{

@@ -7,11 +7,17 @@ public class MyController :
 	{
 	}
 
+	/// <summary>
+	/// Action
+	/// </summary>
 	public Microsoft.AspNetCore.Mvc.IActionResult Index()
 	{
 		return View();
 	}
 
+	/// <summary>
+	/// Action
+	/// </summary>
 	public Microsoft.AspNetCore.Mvc.IActionResult MySecuredAction()
 	{
 		return View();

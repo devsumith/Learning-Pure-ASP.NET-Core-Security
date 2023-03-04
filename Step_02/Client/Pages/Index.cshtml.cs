@@ -7,6 +7,9 @@ public class IndexModel :
 	{
 	}
 
+	/// <summary>
+	/// Handler
+	/// </summary>
 	public void OnGet()
 	{
 	}

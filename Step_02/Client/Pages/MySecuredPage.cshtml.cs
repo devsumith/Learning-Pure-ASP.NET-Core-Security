@@ -7,6 +7,9 @@ public class MySecuredPageModel :
 	{
 	}
 
+	/// <summary>
+	/// Handler
+	/// </summary>
 	public void OnGet()
 	{
 	}
