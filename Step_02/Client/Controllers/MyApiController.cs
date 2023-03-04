@@ -14,7 +14,7 @@ public class MyApiController :
 	public Microsoft.AspNetCore.Mvc.IActionResult Get()
 	{
 		var result =
-			new { message = "GET: Hello, World!" };
+			new { Message = "GET: Hello, World!" };
 
 		return Ok(value: result);
 	}
@@ -23,7 +23,7 @@ public class MyApiController :
 	public Microsoft.AspNetCore.Mvc.IActionResult Post()
 	{
 		var result =
-			new { message = "POST: Hello, World!" };
+			new { Message = "POST: Hello, World!" };
 
 		return Ok(value: result);
 	}

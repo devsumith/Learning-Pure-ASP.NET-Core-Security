@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Step 1", "Step 1", "{7AF30452-84B9-4DC3-98B3-A6FBF41C9879}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Step 1 - Empty Project", "Step 1 - Empty Project", "{7AF30452-84B9-4DC3-98B3-A6FBF41C9879}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client", "Step_01\Client\Client.csproj", "{75ED094E-7325-459D-A262-887A5DD7D4AA}"
 EndProject
