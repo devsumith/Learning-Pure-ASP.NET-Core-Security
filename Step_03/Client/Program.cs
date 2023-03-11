@@ -1,4 +1,6 @@
 ﻿// **************************************************
+// *** Step (1) *************************************
+// **************************************************
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -38,7 +40,11 @@ app.MapControllerRoute
 
 app.Run();
 // **************************************************
+// *** /Step (1) ************************************
+// **************************************************
 
+// **************************************************
+// *** Step (2) *************************************
 // **************************************************
 //using Microsoft.AspNetCore.Builder;
 //using Microsoft.Extensions.Hosting;
@@ -70,10 +76,11 @@ app.Run();
 //app.UseStaticFiles();
 
 //// https://learn.microsoft.com/en-us/aspnet/core/fundamentals/routing?view=aspnetcore-7.0
+////
 //// UseRouting:
 ////
 ////		Matches request to an endpoint.
-
+////
 //// UseEndpoints:
 ////
 ////		Execute the matched endpoint.UseRouting: Matches request
@@ -92,7 +99,11 @@ app.Run();
 
 //app.Run();
 // **************************************************
+// *** /Step (2) ************************************
+// **************************************************
 
+// **************************************************
+// *** Step (3) *************************************
 // **************************************************
 //using Microsoft.AspNetCore.Builder;
 //using Microsoft.Extensions.Hosting;
@@ -136,7 +147,11 @@ app.Run();
 
 //app.Run();
 // **************************************************
+// *** /Step (3) ************************************
+// **************************************************
 
+// **************************************************
+// *** Step (4) *************************************
 // **************************************************
 //using Microsoft.AspNetCore.Builder;
 //using Microsoft.Extensions.Hosting;
@@ -183,7 +198,11 @@ app.Run();
 
 //app.Run();
 // **************************************************
+// *** /Step (4) ************************************
+// **************************************************
 
+// **************************************************
+// *** Step (5) *************************************
 // **************************************************
 //using Microsoft.AspNetCore.Builder;
 //using Microsoft.Extensions.Hosting;
@@ -199,24 +218,38 @@ app.Run();
 //builder.Services
 //	.AddControllersWithViews();
 
-//// New
-////builder.Services
-////	.AddAuthentication(defaultScheme: "Cookies")
-////	;
+//// **************************************************
+//// New - کار نمی‌کند
+//builder.Services
+//	.AddAuthentication(defaultScheme: "Cookies")
+//	;
+//// **************************************************
 
+//// **************************************************
+////// New - کار نمی‌کند
+////builder.Services
+////	.AddAuthentication(defaultScheme: Microsoft.AspNetCore
+////		.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme)
+////	;
+//// **************************************************
+
+//// **************************************************
+////// New
+////builder.Services
+////	.AddAuthentication()
+////	.AddCookie()
+////	;
+//// **************************************************
+
+//// **************************************************
+////// New
 ////builder.Services
 ////	.AddAuthentication(defaultScheme: Microsoft.AspNetCore
 ////		.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme)
 
 ////	.AddCookie()
 ////	;
-
-//builder.Services
-//	.AddAuthentication(defaultScheme: Microsoft.AspNetCore
-//		.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme)
-
-//	.AddCookie()
-//	;
+//// **************************************************
 
 //var app =
 //	builder.Build();
@@ -244,4 +277,6 @@ app.Run();
 //	pattern: "{controller=Home}/{action=Index}/{id?}");
 
 //app.Run();
+// **************************************************
+// *** /Step (5) ************************************
 // **************************************************

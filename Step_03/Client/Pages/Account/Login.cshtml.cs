@@ -7,7 +7,15 @@ public class LoginModel :
 	{
 	}
 
-	public void OnGet()
+	//public void OnGet()
+	//{
+	//}
+
+	[Microsoft.AspNetCore.Mvc.BindProperty]
+	public string? ReturnUrl { get; set; }
+
+	public void OnGet(string? returnUrl)
 	{
+		ReturnUrl = returnUrl;
 	}
 }

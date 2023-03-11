@@ -8,7 +8,11 @@ public class LogoutModel :
 	{
 	}
 
-	public void OnGet()
+
+	public Microsoft.AspNetCore.Mvc.IActionResult OnGet()
 	{
+		// Sign Out / Logout
+
+		return RedirectToPage(pageName: "/Index");
 	}
 }
