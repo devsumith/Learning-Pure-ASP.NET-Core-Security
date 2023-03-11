@@ -1,4 +1,4 @@
-namespace Client.Pages;
+﻿namespace Client.Pages;
 
 [Microsoft.AspNetCore.Authorization.Authorize]
 public class MySecuredPageModel :
@@ -8,6 +8,10 @@ public class MySecuredPageModel :
 	{
 	}
 
+	/// <summary>
+	/// کار نمی‌کند
+	/// </summary>
+	//[Microsoft.AspNetCore.Authorization.Authorize]
 	public void OnGet()
 	{
 	}

@@ -1,44 +1,44 @@
 ﻿// **************************************************
 // *** Step (1) *************************************
 // **************************************************
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.DependencyInjection;
+//using Microsoft.AspNetCore.Builder;
+//using Microsoft.Extensions.Hosting;
+//using Microsoft.Extensions.DependencyInjection;
 
-var builder =
-	Microsoft.AspNetCore.Builder
-	.WebApplication.CreateBuilder(args: args);
+//var builder =
+//	Microsoft.AspNetCore.Builder
+//	.WebApplication.CreateBuilder(args: args);
 
-builder.Services
-	.AddRazorPages();
+//builder.Services
+//	.AddRazorPages();
 
-builder.Services
-	.AddControllersWithViews();
+//builder.Services
+//	.AddControllersWithViews();
 
-var app =
-	builder.Build();
+//var app =
+//	builder.Build();
 
-if (app.Environment.IsDevelopment() == false)
-{
-	app.UseExceptionHandler
-		(errorHandlingPath: "/Error");
+//if (app.Environment.IsDevelopment() == false)
+//{
+//	app.UseExceptionHandler
+//		(errorHandlingPath: "/Error");
 
-	app.UseHsts();
-}
+//	app.UseHsts();
+//}
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
-app.UseStaticFiles();
+//app.UseStaticFiles();
 
-app.UseRouting();
+//app.UseRouting();
 
-app.MapRazorPages();
+//app.MapRazorPages();
 
-app.MapControllerRoute
-	(name: "default",
-	pattern: "{controller=Home}/{action=Index}/{id?}");
+//app.MapControllerRoute
+//	(name: "default",
+//	pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.Run();
+//app.Run();
 // **************************************************
 // *** /Step (1) ************************************
 // **************************************************
@@ -204,79 +204,79 @@ app.Run();
 // **************************************************
 // *** Step (5) *************************************
 // **************************************************
-//using Microsoft.AspNetCore.Builder;
-//using Microsoft.Extensions.Hosting;
-//using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 
-//var builder =
-//	Microsoft.AspNetCore.Builder
-//	.WebApplication.CreateBuilder(args: args);
+var builder =
+	Microsoft.AspNetCore.Builder
+	.WebApplication.CreateBuilder(args: args);
 
-//builder.Services
-//	.AddRazorPages();
+builder.Services
+	.AddRazorPages();
 
-//builder.Services
-//	.AddControllersWithViews();
+builder.Services
+	.AddControllersWithViews();
 
-//// **************************************************
+// **************************************************
 //// New - کار نمی‌کند
 //builder.Services
 //	.AddAuthentication(defaultScheme: "Cookies")
 //	;
-//// **************************************************
+// **************************************************
 
-//// **************************************************
-////// New - کار نمی‌کند
-////builder.Services
-////	.AddAuthentication(defaultScheme: Microsoft.AspNetCore
-////		.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme)
-////	;
-//// **************************************************
+// **************************************************
+//// New - کار نمی‌کند
+//builder.Services
+//	.AddAuthentication(defaultScheme: Microsoft.AspNetCore
+//		.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme)
+//	;
+// **************************************************
 
-//// **************************************************
-////// New
-////builder.Services
-////	.AddAuthentication()
-////	.AddCookie()
-////	;
-//// **************************************************
+// **************************************************
+//// New
+//builder.Services
+//	.AddAuthentication()
+//	.AddCookie()
+//	;
+// **************************************************
 
-//// **************************************************
-////// New
-////builder.Services
-////	.AddAuthentication(defaultScheme: Microsoft.AspNetCore
-////		.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme)
+// **************************************************
+// New
+builder.Services
+	.AddAuthentication(defaultScheme: Microsoft.AspNetCore
+		.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme)
 
-////	.AddCookie()
-////	;
-//// **************************************************
+	.AddCookie()
+	;
+// **************************************************
 
-//var app =
-//	builder.Build();
+var app =
+	builder.Build();
 
-//if (app.Environment.IsDevelopment() == false)
-//{
-//	app.UseExceptionHandler
-//		(errorHandlingPath: "/Error");
+if (app.Environment.IsDevelopment() == false)
+{
+	app.UseExceptionHandler
+		(errorHandlingPath: "/Error");
 
-//	app.UseHsts();
-//}
+	app.UseHsts();
+}
 
-//app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
-//app.UseStaticFiles();
+app.UseStaticFiles();
 
-//app.UseRouting();
+app.UseRouting();
 
-//app.UseAuthorization();
+app.UseAuthorization();
 
-//app.MapRazorPages();
+app.MapRazorPages();
 
-//app.MapControllerRoute
-//	(name: "default",
-//	pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapControllerRoute
+	(name: "default",
+	pattern: "{controller=Home}/{action=Index}/{id?}");
 
-//app.Run();
+app.Run();
 // **************************************************
 // *** /Step (5) ************************************
 // **************************************************
