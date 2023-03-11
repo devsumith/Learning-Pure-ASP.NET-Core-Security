@@ -1,5 +1,8 @@
 namespace Client.Pages;
 
+/// <summary>
+/// https://localhost:5000/MySecuredPage
+/// </summary>
 public class MySecuredPageModel :
 	Microsoft.AspNetCore.Mvc.RazorPages.PageModel
 {

@@ -9,6 +9,7 @@ public class MyController :
 
 	/// <summary>
 	/// Action
+	/// https://localhost:5000/My/Index
 	/// </summary>
 	public Microsoft.AspNetCore.Mvc.IActionResult Index()
 	{
@@ -17,6 +18,7 @@ public class MyController :
 
 	/// <summary>
 	/// Action
+	/// https://localhost:5000/My/MySecuredAction
 	/// </summary>
 	public Microsoft.AspNetCore.Mvc.IActionResult MySecuredAction()
 	{

@@ -1,5 +1,8 @@
 ﻿namespace Client.Controllers;
 
+/// <summary>
+/// https://localhost:5000/api/MyApi
+/// </summary>
 [Microsoft.AspNetCore.Mvc.Route
 	(template: "api/[controller]")]
 [Microsoft.AspNetCore.Mvc.ApiController]
