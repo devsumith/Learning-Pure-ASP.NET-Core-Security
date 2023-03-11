@@ -16,6 +16,8 @@ public class LogoutModel :
 
 	public Microsoft.AspNetCore.Mvc.IActionResult OnGet()
 	{
+		// Sign Out / Logout
+
 		// دقت کنید که دستور ذیل کار نمی‌کند
 		//return RedirectToPage(pageName: "~/Index");
 
