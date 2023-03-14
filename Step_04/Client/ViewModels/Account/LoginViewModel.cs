@@ -19,7 +19,8 @@
 // **************************************************
 // یک کد استاندارد
 // **************************************************
-namespace Client.ViewModels.Account;
+//namespace Client.ViewModels.Account;
+namespace ViewModels.Account;
 
 public class LoginViewModel : object
 {
@@ -41,6 +42,7 @@ public class LoginViewModel : object
 	[System.ComponentModel.DataAnnotations.MaxLength
 	(length: 20)]
 	public string? Username { get; set; }
+	//public string Username { get; set; }
 	#endregion /public string? Username { get; set; }
 
 	#region public string? Password { get; set; }
@@ -53,6 +55,7 @@ public class LoginViewModel : object
 	[System.ComponentModel.DataAnnotations.MaxLength
 		(length: 20)]
 	public string? Password { get; set; }
+	//public string Password { get; set; }
 	#endregion /public string? Password { get; set; }
 
 	#endregion /Properties

@@ -10,8 +10,7 @@ public class LoginModel :
 {
 	public LoginModel() : base()
 	{
-		ViewModel =
-			new ViewModels.Account.LoginViewModel();
+		ViewModel = new();
 	}
 
 	[Microsoft.AspNetCore.Mvc.BindProperty]
@@ -28,6 +27,7 @@ public class LoginModel :
 			return Page();
 		}
 
+		// **************************************************
 		// دستورات ذیل صرفا برای این است
 		// که ویژوال استودیو وارنینگ ندهد
 		if (ViewModel.Username == null || ViewModel.Password == null)
@@ -46,10 +46,12 @@ public class LoginModel :
 
 			return Page();
 		}
+		// **************************************************
 
 		// **************************************************
 		var claims =
-			new System.Collections.Generic.List<System.Security.Claims.Claim>();
+			new System.Collections.Generic
+			.List<System.Security.Claims.Claim>();
 
 		System.Security.Claims.Claim claim;
 
@@ -63,18 +65,21 @@ public class LoginModel :
 		// **************************************************
 
 		var identity =
-			new System.Security.Claims.ClaimsIdentity(claims: claims);
+			new System.Security.Claims
+			.ClaimsIdentity(claims: claims);
 
 		// **************************************************
 		// *** به سه حالت می‌توانیم تعریف کنیم****************
 		// **************************************************
 		var claimsPrincipal =
-			new System.Security.Claims.ClaimsPrincipal(identity: identity);
+			new System.Security.Claims
+			.ClaimsPrincipal(identity: identity);
 		// **************************************************
 
 		// **************************************************
 		//var claimsPrincipal =
-		//	new System.Security.Claims.ClaimsPrincipal(identities: new[] { identity });
+		//	new System.Security.Claims
+		//	.ClaimsPrincipal(identities: new[] { identity });
 		// **************************************************
 
 		// **************************************************
@@ -109,8 +114,7 @@ public class LoginModel :
 //{
 //	public LoginModel() : base()
 //	{
-//		ViewModel =
-//			new ViewModels.Account.LoginViewModel();
+//		ViewModel = new();
 //	}
 
 //	[Microsoft.AspNetCore.Mvc.BindProperty]
@@ -195,8 +199,7 @@ public class LoginModel :
 //{
 //	public LoginModel() : base()
 //	{
-//		ViewModel =
-//			new ViewModels.Account.LoginViewModel();
+//		ViewModel = new();
 //	}
 
 //	[Microsoft.AspNetCore.Mvc.BindProperty]
