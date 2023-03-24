@@ -2,7 +2,6 @@
 // *** Part (1) *************************************
 // **************************************************
 using Microsoft.AspNetCore.Authentication;
-using System.Reflection.Metadata.Ecma335;
 
 namespace Client.Pages.Account;
 
@@ -14,8 +13,11 @@ public class LoginModel :
 		ViewModel = new();
 	}
 
+	/// <summary>
+	/// داشته باشند Set هم Get ها باید هم Property این‌گونه
+	/// </summary>
 	[Microsoft.AspNetCore.Mvc.BindProperty]
-	public ViewModels.Account.LoginViewModel ViewModel { get; set; }
+	public ViewModels.Pages.Account.LoginViewModel ViewModel { get; set; }
 
 	public void OnGet(string? returnUrl)
 	{
@@ -130,7 +132,7 @@ public class LoginModel :
 //	}
 
 //	[Microsoft.AspNetCore.Mvc.BindProperty]
-//	public ViewModels.Account.LoginViewModel ViewModel { get; set; }
+//	public ViewModels.Pages.Account.LoginViewModel ViewModel { get; set; }
 
 //	public void OnGet(string? returnUrl)
 //	{
@@ -222,7 +224,7 @@ public class LoginModel :
 //	}
 
 //	[Microsoft.AspNetCore.Mvc.BindProperty]
-//	public ViewModels.Account.LoginViewModel ViewModel { get; set; }
+//	public ViewModels.Pages.Account.LoginViewModel ViewModel { get; set; }
 
 //	public void OnGet(string? returnUrl)
 //	{
