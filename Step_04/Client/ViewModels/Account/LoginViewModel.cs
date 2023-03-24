@@ -12,6 +12,8 @@
 //		[System.ComponentModel.DataAnnotations.MaxLength(length: 20)]
 //		[System.ComponentModel.DataAnnotations.Required(AllowEmptyStrings = false)]
 //		public string Password { get; set; }
+
+//		public string ReturnUrl { get; set; }
 //	}
 //}
 // **************************************************
@@ -57,6 +59,13 @@ public class LoginViewModel : object
 	public string? Password { get; set; }
 	//public string Password { get; set; }
 	#endregion /public string? Password { get; set; }
+
+	#region public string? ReturnUrl { get; set; }
+	/// <summary>
+	/// صفحه‌ای که احتمالا کاربر می‌خواهد به آن‌جا برود
+	/// </summary>
+	public string? ReturnUrl { get; set; }
+	#endregion /public string? ReturnUrl { get; set; }
 
 	#endregion /Properties
 }

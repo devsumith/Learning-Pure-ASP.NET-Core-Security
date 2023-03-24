@@ -15,8 +15,14 @@ builder.Services
 builder.Services
 	.AddControllersWithViews();
 
+//builder.Services
+//	.AddAuthentication()
+//	.AddCookie()
+//	;
+
 builder.Services
-	.AddAuthentication()
+	.AddAuthentication(defaultScheme: Microsoft.AspNetCore
+		.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme)
 	.AddCookie()
 	;
 
@@ -70,7 +76,8 @@ app.Run();
 //	.AddControllersWithViews();
 
 //builder.Services
-//	.AddAuthentication()
+//	.AddAuthentication(defaultScheme: Microsoft.AspNetCore
+//		.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme)
 //	.AddCookie()
 //	;
 
@@ -124,10 +131,10 @@ app.Run();
 //// New
 //builder.Services
 //	.AddAuthentication(defaultScheme:
-//		Infrastructure.Authentication.DefaultScheme)
-	
+//		Infrastructure.Security.Constants.DefaultScheme)
+
 //	.AddCookie(authenticationScheme:
-//		Infrastructure.Authentication.DefaultScheme)
+//		Infrastructure.Security.Constants.DefaultScheme)
 //	;
 
 //var app =

@@ -2,6 +2,7 @@
 // *** Part (1) *************************************
 // **************************************************
 using Microsoft.AspNetCore.Authentication;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Client.Pages.Account;
 
@@ -16,8 +17,9 @@ public class LoginModel :
 	[Microsoft.AspNetCore.Mvc.BindProperty]
 	public ViewModels.Account.LoginViewModel ViewModel { get; set; }
 
-	public void OnGet()
+	public void OnGet(string? returnUrl)
 	{
+		ViewModel.ReturnUrl = returnUrl;
 	}
 
 	public Microsoft.AspNetCore.Mvc.IActionResult OnPost()
@@ -49,12 +51,15 @@ public class LoginModel :
 		// **************************************************
 
 		// **************************************************
+		// **************************************************
+		// **************************************************
 		var claims =
 			new System.Collections.Generic
 			.List<System.Security.Claims.Claim>();
 
 		System.Security.Claims.Claim claim;
 
+		// **************************************************
 		//claim = new System.Security
 		//	.Claims.Claim(type: "name", value: ViewModel.Username);
 
@@ -97,7 +102,14 @@ public class LoginModel :
 			(principal: claimsPrincipal);
 		// **************************************************
 
-		return RedirectToPage(pageName: "/Index");
+		if (string.IsNullOrWhiteSpace(value: ViewModel.ReturnUrl))
+		{
+			return RedirectToPage(pageName: "/Index");
+		}
+		else
+		{
+			return Redirect(url: ViewModel.ReturnUrl);
+		}
 	}
 }
 // **************************************************
@@ -120,8 +132,9 @@ public class LoginModel :
 //	[Microsoft.AspNetCore.Mvc.BindProperty]
 //	public ViewModels.Account.LoginViewModel ViewModel { get; set; }
 
-//	public void OnGet()
+//	public void OnGet(string? returnUrl)
 //	{
+//		ViewModel.ReturnUrl = returnUrl;
 //	}
 
 //	public async System.Threading.Tasks.Task
@@ -164,12 +177,11 @@ public class LoginModel :
 //		// **************************************************
 //		// https://learn.microsoft.com/en-us/dotnet/core/compatibility/aspnetcore#identity-signinasync-throws-exception-for-unauthenticated-identity
 //		// **************************************************
-
 //		// نکته بسیار مهم
 //		// مشخص شود در غیر این صورت در زمان ورود به خطا خواهیم خورد authenticationType باید
 //		//var identity =
 //		//	new System.Security.Claims.ClaimsIdentity(claims: claims);
-
+//		// **************************************************
 //		var identity =
 //			new System.Security.Claims.ClaimsIdentity
 //			(claims: claims, authenticationType: Microsoft.AspNetCore
@@ -182,7 +194,14 @@ public class LoginModel :
 //		await HttpContext.SignInAsync
 //			(principal: claimsPrincipal);
 
-//		return RedirectToPage(pageName: "/Index");
+//		if (string.IsNullOrWhiteSpace(value: ViewModel.ReturnUrl))
+//		{
+//			return RedirectToPage(pageName: "/Index");
+//		}
+//		else
+//		{
+//			return Redirect(url: ViewModel.ReturnUrl);
+//		}
 //	}
 //}
 // **************************************************
@@ -205,8 +224,9 @@ public class LoginModel :
 //	[Microsoft.AspNetCore.Mvc.BindProperty]
 //	public ViewModels.Account.LoginViewModel ViewModel { get; set; }
 
-//	public void OnGet()
+//	public void OnGet(string? returnUrl)
 //	{
+//		ViewModel.ReturnUrl = returnUrl;
 //	}
 
 //	public async System.Threading.Tasks.Task
@@ -249,15 +269,22 @@ public class LoginModel :
 
 //		var identity =
 //			new System.Security.Claims.ClaimsIdentity(claims: claims,
-//			authenticationType: Infrastructure.Authentication.DefaultScheme);
+//			authenticationType: Infrastructure.Security.Constants.DefaultScheme);
 
 //		var claimsPrincipal =
 //			new System.Security.Claims.ClaimsPrincipal(identity: identity);
 
 //		await HttpContext.SignInAsync(scheme: Infrastructure
-//			.Authentication.DefaultScheme, principal: claimsPrincipal);
+//			.Security.Constants.DefaultScheme, principal: claimsPrincipal);
 
-//		return RedirectToPage(pageName: "/Index");
+//		if (string.IsNullOrWhiteSpace(value: ViewModel.ReturnUrl))
+//		{
+//			return RedirectToPage(pageName: "/Index");
+//		}
+//		else
+//		{
+//			return Redirect(url: ViewModel.ReturnUrl);
+//		}
 //	}
 //}
 // **************************************************

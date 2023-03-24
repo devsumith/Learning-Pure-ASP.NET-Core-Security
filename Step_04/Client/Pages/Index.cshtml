@@ -6,6 +6,12 @@
 	Page: Home
 </h3>
 
+@if (User is not null && User.Identity is not null && User.Identity.IsAuthenticated)
+{
+	<b>Welcome @(User.Identity.Name)!</b>
+	<hr />
+}
+
 <hr />
 
 [<a href="~/Index">Home</a>]

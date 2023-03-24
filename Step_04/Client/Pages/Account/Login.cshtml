@@ -11,17 +11,21 @@
 
 <form method="post">
 
+	<input type="hidden" asp-for="ViewModel.ReturnUrl" />
+
 	<div asp-validation-summary="All"></div>
 
 	<label asp-for="ViewModel.Username"></label>
 	<br />
 	<input type="text" asp-for="ViewModel.Username" autocomplete="off" />
+	<span asp-validation-for="ViewModel.Username"></span>
 
 	<br />
 
 	<label asp-for="ViewModel.Password"></label>
 	<br />
 	<input type="password" asp-for="ViewModel.Password" autocomplete="off" />
+	<span asp-validation-for="ViewModel.Password"></span>
 
 	<br />
 	<br />
