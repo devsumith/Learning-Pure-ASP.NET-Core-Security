@@ -41,6 +41,7 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 
+// Where do you want to go?
 app.UseRouting();
 
 // New - Who are you?
@@ -49,6 +50,7 @@ app.UseAuthentication();
 // What do you allowed to access?
 app.UseAuthorization();
 
+// let me lead you to that endpoint!
 app.MapRazorPages();
 
 app.MapControllerRoute

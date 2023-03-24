@@ -14,6 +14,7 @@ public class LoginModel :
 	}
 
 	/// <summary>
+	/// باشند public ها باید Property این‌گونه
 	/// داشته باشند Set هم Get ها باید هم Property این‌گونه
 	/// </summary>
 	[Microsoft.AspNetCore.Mvc.BindProperty]
@@ -107,6 +108,7 @@ public class LoginModel :
 		if (string.IsNullOrWhiteSpace(value: ViewModel.ReturnUrl))
 		{
 			return RedirectToPage(pageName: "/Index");
+			//return RedirectToPage(pageName: "/Dashboard");
 		}
 		else
 		{
