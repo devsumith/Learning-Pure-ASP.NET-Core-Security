@@ -193,7 +193,8 @@ public class LoginModel :
 //		// **************************************************
 
 //		var claimsPrincipal =
-//			new System.Security.Claims.ClaimsPrincipal(identity: identity);
+//			new System.Security.Claims
+//			.ClaimsPrincipal(identity: identity);
 
 //		await HttpContext.SignInAsync
 //			(principal: claimsPrincipal);
@@ -264,9 +265,11 @@ public class LoginModel :
 //			.List<System.Security.Claims.Claim>();
 
 //		System.Security.Claims.Claim claim;
+//		// **************************************************
 
-//		claim = new System.Security.Claims.Claim
-//			(type: System.Security.Claims.ClaimTypes.Name, value: ViewModel.Username);
+//		// **************************************************
+//		claim = new System.Security.Claims.Claim(type:
+//			System.Security.Claims.ClaimTypes.Name, value: ViewModel.Username);
 
 //		claims.Add(item: claim);
 //		// **************************************************
@@ -276,7 +279,8 @@ public class LoginModel :
 //			authenticationType: Infrastructure.Security.Constants.DefaultScheme);
 
 //		var claimsPrincipal =
-//			new System.Security.Claims.ClaimsPrincipal(identity: identity);
+//			new System.Security.Claims
+//			.ClaimsPrincipal(identity: identity);
 
 //		await HttpContext.SignInAsync(scheme: Infrastructure
 //			.Security.Constants.DefaultScheme, principal: claimsPrincipal);

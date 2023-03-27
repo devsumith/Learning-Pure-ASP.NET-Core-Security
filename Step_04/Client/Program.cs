@@ -63,6 +63,8 @@ app.Run();
 // **************************************************
 // *** Part (2) *************************************
 // **************************************************
+// کد ذیل تفاوتی با کد قسمت یک ندارد
+// **************************************************
 //using Microsoft.AspNetCore.Builder;
 //using Microsoft.Extensions.Hosting;
 //using Microsoft.Extensions.DependencyInjection;
