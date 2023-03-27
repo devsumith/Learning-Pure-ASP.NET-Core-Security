@@ -66,8 +66,8 @@ public class LoginModel :
 		//claim = new System.Security
 		//	.Claims.Claim(type: "name", value: ViewModel.Username);
 
-		claim = new System.Security.Claims.Claim
-			(type: System.Security.Claims.ClaimTypes.Name, value: ViewModel.Username);
+		claim = new System.Security.Claims.Claim(type:
+			System.Security.Claims.ClaimTypes.Name, value: ViewModel.Username);
 
 		claims.Add(item: claim);
 		// **************************************************
@@ -168,12 +168,13 @@ public class LoginModel :
 
 //		// **************************************************
 //		var claims =
-//			new System.Collections.Generic.List<System.Security.Claims.Claim>();
+//			new System.Collections.Generic
+//			.List<System.Security.Claims.Claim>();
 
 //		System.Security.Claims.Claim claim;
 
-//		claim = new System.Security.Claims.Claim
-//			(type: System.Security.Claims.ClaimTypes.Name, value: ViewModel.Username);
+//		claim = new System.Security.Claims.Claim(type:
+//			System.Security.Claims.ClaimTypes.Name, value: ViewModel.Username);
 
 //		claims.Add(item: claim);
 //		// **************************************************
@@ -235,7 +236,7 @@ public class LoginModel :
 //	}
 
 //	public async System.Threading.Tasks.Task
-//		<Microsoft.AspNetCore.Mvc.IActionResult> OnPost()
+//		<Microsoft.AspNetCore.Mvc.IActionResult> OnPostAsync()
 //	{
 //		if (ModelState.IsValid == false)
 //		{

@@ -11,14 +11,14 @@ public class LogoutModel :
 	}
 
 	public async System.Threading.Tasks.Task
-		<Microsoft.AspNetCore.Mvc.IActionResult> OnGet()
+		<Microsoft.AspNetCore.Mvc.IActionResult> OnGetAsync()
 	{
 		// Part (2)
 		await HttpContext.SignOutAsync();
 
 		// Part (3)
-		//await HttpContext.SignOutAsync
-		//	(scheme: Infrastructure.Security.Constants.DefaultScheme);
+		//await HttpContext.SignOutAsync(scheme:
+		//	Infrastructure.Security.Constants.DefaultScheme);
 
 		return RedirectToPage(pageName: "/Index");
 	}
