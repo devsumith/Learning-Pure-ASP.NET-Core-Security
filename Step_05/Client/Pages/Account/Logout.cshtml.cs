@@ -13,9 +13,8 @@ public class LogoutModel :
 	public async System.Threading.Tasks.Task
 		<Microsoft.AspNetCore.Mvc.IActionResult> OnGetAsync()
 	{
-		// using Microsoft.AspNetCore.Authentication;
-		await HttpContext.SignOutAsync
-			(scheme: Infrastructure.Authentication.DefaultScheme);
+		await HttpContext.SignOutAsync(scheme:
+			Infrastructure.Security.Constants.DefaultScheme);
 
 		return RedirectToPage(pageName: "/Index");
 	}

@@ -1,7 +1,4 @@
-﻿// **************************************************
-// *** Part (1) *************************************
-// **************************************************
-using Microsoft.AspNetCore.Authentication;
+﻿using Microsoft.AspNetCore.Authentication;
 
 namespace Client.Pages.Account;
 
@@ -10,19 +7,19 @@ public class LoginModel :
 {
 	public LoginModel() : base()
 	{
-		ViewModel =
-			new ViewModels.Account.LoginViewModel();
+		ViewModel = new();
 	}
 
 	[Microsoft.AspNetCore.Mvc.BindProperty]
-	public ViewModels.Account.LoginViewModel ViewModel { get; set; }
+	public ViewModels.Pages.Account.LoginViewModel ViewModel { get; set; }
 
-	public void OnGet()
+	public void OnGet(string? returnUrl)
 	{
+		ViewModel.ReturnUrl = returnUrl;
 	}
 
 	public async System.Threading.Tasks.Task
-		<Microsoft.AspNetCore.Mvc.IActionResult> OnPost()
+		<Microsoft.AspNetCore.Mvc.IActionResult> OnPostAsync()
 	{
 		if (ModelState.IsValid == false)
 		{
@@ -52,24 +49,33 @@ public class LoginModel :
 			.List<System.Security.Claims.Claim>();
 
 		System.Security.Claims.Claim claim;
+		// **************************************************
 
-		claim = new System.Security.Claims.Claim
-			(type: System.Security.Claims.ClaimTypes.Name, value: ViewModel.Username);
+		// **************************************************
+		claim = new System.Security.Claims.Claim(type:
+			System.Security.Claims.ClaimTypes.Name, value: ViewModel.Username);
 
 		claims.Add(item: claim);
 		// **************************************************
 
 		var identity =
 			new System.Security.Claims.ClaimsIdentity(claims: claims,
-			authenticationType: Infrastructure.Authentication.DefaultScheme);
+			authenticationType: Infrastructure.Security.Constants.DefaultScheme);
 
 		var claimsPrincipal =
-			new System.Security.Claims.ClaimsPrincipal(identity: identity);
+			new System.Security.Claims
+			.ClaimsPrincipal(identity: identity);
 
 		await HttpContext.SignInAsync(scheme: Infrastructure
-			.Authentication.DefaultScheme, principal: claimsPrincipal);
+			.Security.Constants.DefaultScheme, principal: claimsPrincipal);
 
-		return RedirectToPage(pageName: "/Index");
+		if (string.IsNullOrWhiteSpace(value: ViewModel.ReturnUrl))
+		{
+			return RedirectToPage(pageName: "/Index");
+		}
+		else
+		{
+			return Redirect(url: ViewModel.ReturnUrl);
+		}
 	}
 }
-// **************************************************

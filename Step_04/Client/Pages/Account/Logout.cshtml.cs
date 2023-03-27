@@ -14,9 +14,11 @@ public class LogoutModel :
 		<Microsoft.AspNetCore.Mvc.IActionResult> OnGetAsync()
 	{
 		// Part (2)
+		// using Microsoft.AspNetCore.Authentication;
 		await HttpContext.SignOutAsync();
 
 		// Part (3)
+		//// using Microsoft.AspNetCore.Authentication;
 		//await HttpContext.SignOutAsync(scheme:
 		//	Infrastructure.Security.Constants.DefaultScheme);
 

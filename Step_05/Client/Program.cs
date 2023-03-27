@@ -1,7 +1,4 @@
-﻿// **************************************************
-// *** Part (1) *************************************
-// **************************************************
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -15,12 +12,13 @@ builder.Services
 builder.Services
 	.AddControllersWithViews();
 
+// New
 builder.Services
 	.AddAuthentication(defaultScheme:
-		Infrastructure.Authentication.DefaultScheme)
-	
+		Infrastructure.Security.Constants.DefaultScheme)
+
 	.AddCookie(authenticationScheme:
-		Infrastructure.Authentication.DefaultScheme)
+		Infrastructure.Security.Constants.DefaultScheme)
 	;
 
 var app =
@@ -51,4 +49,3 @@ app.MapControllerRoute
 	pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
-// **************************************************
