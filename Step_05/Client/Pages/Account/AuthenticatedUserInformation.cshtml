@@ -1,9 +1,9 @@
 ﻿@page
 
-@model Client.Pages.Account.UserSecurityInformationModel
+@model Client.Pages.Account.AuthenticatedUserInformationModel
 
 <h3>
-	Page: User Security Information
+	Page: Authenticated User Information
 </h3>
 
 @if (User.Identity is null || User.Identity.IsAuthenticated == false)
