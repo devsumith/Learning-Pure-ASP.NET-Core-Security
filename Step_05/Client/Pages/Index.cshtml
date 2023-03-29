@@ -22,8 +22,8 @@
 
 @if (isAuthenticated)
 {
-	<b>Welcome @(User.Identity!.Name)!</b>
 	<hr />
+	<b>Welcome @(User.Identity!.Name)!</b>
 }
 
 <hr />
@@ -34,6 +34,9 @@
 {
 	<text>| </text>
 	<a href="~/MySecuredPage">My Secured Page</a>
+
+	<text>| </text>
+	<a href="~/Account/UserSecurityInformation">User Security Information</a>
 
 	<text>| </text>
 	<a href="~/MyAdminPage">My Admin Page</a>
