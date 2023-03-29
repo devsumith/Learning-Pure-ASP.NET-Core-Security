@@ -2,13 +2,27 @@
 
 @model Client.Pages.IndexModel
 
+@{
+	var isAuthenticated = false;
+
+	//if (User is not null && User.Identity is not null && User.Identity.IsAuthenticated)
+	//{
+	//	isAuthenticated = true;
+	//}
+
+	if (User.Identity is not null && User.Identity.IsAuthenticated)
+	{
+		isAuthenticated = true;
+	}
+}
+
 <h3>
 	Page: Home
 </h3>
 
-@if (User.Identity is not null && User.Identity.IsAuthenticated)
+@if (isAuthenticated)
 {
-	<b>Welcome @(User.Identity.Name)!</b>
+	<b>Welcome @(User.Identity!.Name)!</b>
 	<hr />
 }
 
@@ -16,16 +30,19 @@
 
 <a href="~/Index">Home</a>
 
-@if (User.Identity is not null && User.Identity.IsAuthenticated)
+@if (isAuthenticated)
 {
 	<text>| </text>
 	<a href="~/MySecuredPage">My Secured Page</a>
+
+	<text>| </text>
+	<a href="~/MyAdminPage">My Admin Page</a>
 }
 
 |
 <a href="~/Account/Login">Login</a>
 
-@if (User.Identity is not null && User.Identity.IsAuthenticated)
+@if (isAuthenticated)
 {
 	<text>| </text>
 	<a href="~/Account/Logout">Logout</a>
@@ -34,7 +51,7 @@
 |
 <a href="~/Account/Register">Register</a>
 
-@if (User.Identity is not null && User.Identity.IsAuthenticated)
+@if (isAuthenticated)
 {
 	<text>| </text>
 	<a href="~/Account/AccessDenied">Access Denied</a>
@@ -43,7 +60,7 @@
 |
 <a href="~/My/Index">My Controller: Index</a>
 
-@if (User.Identity is not null && User.Identity.IsAuthenticated)
+@if (isAuthenticated)
 {
 	<text>| </text>
 	<a href="~/My/MySecuredAction">My Controller: My Secured Action</a>
@@ -52,7 +69,7 @@
 |
 <a href="~/api/MyApi">My Api: (GET)</a>
 
-@if (User.Identity is not null && User.Identity.IsAuthenticated)
+@if (isAuthenticated)
 {
 	<text>| </text>
 	<button onclick="getData()" type="button">My Api: POST</button>

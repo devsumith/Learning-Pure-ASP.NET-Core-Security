@@ -34,19 +34,21 @@ public class LoginViewModel : object
 	public string? Password { get; set; }
 	#endregion /public string? Password { get; set; }
 
-	#region public bool RememberMe { get; set; }
-	/// <summary>
-	/// مرا به خاطر داشته باش
-	/// </summary>
-	public bool RememberMe { get; set; }
-	#endregion /public bool RememberMe { get; set; }
-
 	#region public string? ReturnUrl { get; set; }
 	/// <summary>
 	/// صفحه‌ای که احتمالا کاربر می‌خواهد به آن‌جا برود
 	/// </summary>
 	public string? ReturnUrl { get; set; }
 	#endregion /public string? ReturnUrl { get; set; }
+
+
+
+	#region public bool RememberMe { get; set; }
+	/// <summary>
+	/// مرا به خاطر داشته باش
+	/// </summary>
+	public bool RememberMe { get; set; }
+	#endregion /public bool RememberMe { get; set; }
 
 	#endregion /Properties
 }

@@ -12,7 +12,6 @@ builder.Services
 builder.Services
 	.AddControllersWithViews();
 
-// New
 builder.Services
 	.AddAuthentication(defaultScheme:
 		Infrastructure.Security.Constants.DefaultScheme)

@@ -31,17 +31,59 @@ public class LoginModel :
 			return Page();
 		}
 
-		if ((ViewModel.Username.ToLower() != "Dariush".ToLower()) ||
-			(ViewModel.Password != "1234512345"))
+		// **************************************************
+		// New
+		string? role = null;
+
+		// New
+		switch (ViewModel.Username.ToLower())
 		{
-			var errorMessage =
-				"Wrong Usernam and/or Password!";
+			case "dariush":
+			{
+				if (ViewModel.Password != "1234512345")
+				{
+					var errorMessage =
+						"Wrong Usernam and/or Password!";
 
-			ModelState.AddModelError
-				(key: string.Empty, errorMessage: errorMessage);
+					ModelState.AddModelError
+						(key: string.Empty, errorMessage: errorMessage);
 
-			return Page();
+					return Page();
+				}
+
+				role = "Admin";
+
+				break;
+			}
+
+			case "alireza":
+			{
+				if (ViewModel.Password != "1234512345")
+				{
+					var errorMessage =
+						"Wrong Usernam and/or Password!";
+
+					ModelState.AddModelError
+						(key: string.Empty, errorMessage: errorMessage);
+
+					return Page();
+				}
+
+				break;
+			}
+
+			default:
+			{
+				var errorMessage =
+					"Wrong Usernam and/or Password!";
+
+				ModelState.AddModelError
+					(key: string.Empty, errorMessage: errorMessage);
+
+				return Page();
+			}
 		}
+		// **************************************************
 
 		// **************************************************
 		var claims =
@@ -52,22 +94,57 @@ public class LoginModel :
 		// **************************************************
 
 		// **************************************************
+		// نکته مهم، دستور ذیل کار نمی‌کند
+		//claim = new System.Security.Claims.Claim
+		//	(type: "name", value: ViewModel.Username);
+
+		// نکته مهم، دستور ذیل کار نمی‌کند
+		//claim = new System.Security.Claims.Claim
+		//	(type: "Name", value: ViewModel.Username);
+
 		claim = new System.Security.Claims.Claim(type:
 			System.Security.Claims.ClaimTypes.Name, value: ViewModel.Username);
 
 		claims.Add(item: claim);
 		// **************************************************
 
-		var identity =
+		// **************************************************
+		// New
+		if (string.IsNullOrWhiteSpace(value: role) == false)
+		{
+			// نکته مهم، دستور ذیل کار نمی‌کند
+			//claim = new System.Security.Claims
+			//	.Claim(type: "role", value: role);
+
+			// نکته مهم، دستور ذیل کار نمی‌کند
+			//claim = new System.Security.Claims
+			//	.Claim(type: "Role", value: role);
+
+			claim = new System.Security.Claims.Claim(type:
+				System.Security.Claims.ClaimTypes.Role, value: role);
+
+			claims.Add(item: claim);
+		}
+		// **************************************************
+
+		var claimsIdentity =
 			new System.Security.Claims.ClaimsIdentity(claims: claims,
 			authenticationType: Infrastructure.Security.Constants.DefaultScheme);
 
 		var claimsPrincipal =
 			new System.Security.Claims
-			.ClaimsPrincipal(identity: identity);
+			.ClaimsPrincipal(identity: claimsIdentity);
 
-		await HttpContext.SignInAsync(scheme: Infrastructure
-			.Security.Constants.DefaultScheme, principal: claimsPrincipal);
+		// New
+		var authenticationProperties = new Microsoft
+			.AspNetCore.Authentication.AuthenticationProperties
+		{
+			IsPersistent = ViewModel.RememberMe,
+		};
+
+		// New
+		await HttpContext.SignInAsync(scheme: Infrastructure.Security.Constants
+			.DefaultScheme, principal: claimsPrincipal, properties: authenticationProperties);
 
 		if (string.IsNullOrWhiteSpace(value: ViewModel.ReturnUrl))
 		{
