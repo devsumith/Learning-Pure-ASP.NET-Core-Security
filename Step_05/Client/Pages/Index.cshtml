@@ -3,6 +3,7 @@
 @model Client.Pages.IndexModel
 
 @{
+	// New
 	var isAuthenticated = false;
 
 	//if (User is not null && User.Identity is not null && User.Identity.IsAuthenticated)
@@ -20,6 +21,7 @@
 	Page: Home
 </h3>
 
+@*New*@
 @if (isAuthenticated)
 {
 	<hr />
@@ -30,14 +32,17 @@
 
 <a href="~/Index">Home</a>
 
+@*New*@
 @if (isAuthenticated)
 {
 	<text>| </text>
 	<a href="~/MySecuredPage">My Secured Page</a>
 
+	@*New*@
 	<text>| </text>
 	<a href="~/Account/UserSecurityInformation">User Security Information</a>
 
+	@*New*@
 	<text>| </text>
 	<a href="~/MyAdminPage">My Admin Page</a>
 }
@@ -45,6 +50,7 @@
 |
 <a href="~/Account/Login">Login</a>
 
+@*New*@
 @if (isAuthenticated)
 {
 	<text>| </text>
@@ -54,6 +60,7 @@
 |
 <a href="~/Account/Register">Register</a>
 
+@*New*@
 @if (isAuthenticated)
 {
 	<text>| </text>
@@ -63,6 +70,7 @@
 |
 <a href="~/My/Index">My Controller: Index</a>
 
+@*New*@
 @if (isAuthenticated)
 {
 	<text>| </text>
@@ -72,6 +80,7 @@
 |
 <a href="~/api/MyApi">My Api: (GET)</a>
 
+@*New*@
 @if (isAuthenticated)
 {
 	<text>| </text>
