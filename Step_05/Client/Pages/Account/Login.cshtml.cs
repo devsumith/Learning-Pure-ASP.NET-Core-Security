@@ -43,7 +43,7 @@ public class LoginModel :
 				if (ViewModel.Password != "1234512345")
 				{
 					var errorMessage =
-						"Wrong Usernam and/or Password!";
+						"Wrong Username and/or Password!";
 
 					ModelState.AddModelError
 						(key: string.Empty, errorMessage: errorMessage);
@@ -61,7 +61,7 @@ public class LoginModel :
 				if (ViewModel.Password != "1234512345")
 				{
 					var errorMessage =
-						"Wrong Usernam and/or Password!";
+						"Wrong Username and/or Password!";
 
 					ModelState.AddModelError
 						(key: string.Empty, errorMessage: errorMessage);
@@ -75,7 +75,7 @@ public class LoginModel :
 			default:
 			{
 				var errorMessage =
-					"Wrong Usernam and/or Password!";
+					"Wrong Username and/or Password!";
 
 				ModelState.AddModelError
 					(key: string.Empty, errorMessage: errorMessage);

@@ -47,8 +47,15 @@
 	<a href="~/MyAdminPage">My Admin Page</a>
 }
 
-|
-<a href="~/Account/Login">Login</a>
+@*New*@
+@if (isAuthenticated == false)
+{
+	<text>| </text>
+	<a href="~/Account/Login">Login</a>
+
+	<text>| </text>
+	<a href="~/Account/Register">Register</a>
+}
 
 @*New*@
 @if (isAuthenticated)
@@ -56,9 +63,6 @@
 	<text>| </text>
 	<a href="~/Account/Logout">Logout</a>
 }
-
-|
-<a href="~/Account/Register">Register</a>
 
 @*New*@
 @if (isAuthenticated)
