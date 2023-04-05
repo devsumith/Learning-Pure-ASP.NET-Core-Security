@@ -1,0 +1,55 @@
+﻿@page
+
+@model Client.Pages.Account.AuthenticatedUserInformationModel
+
+<h3>
+	Page: Authenticated User Information
+</h3>
+
+@if (User.Identity is null || User.Identity.IsAuthenticated == false)
+{
+	return;
+}
+
+<hr />
+
+<ul>
+	<li>
+		Name: @(User.Identity.Name)
+	</li>
+	<li>
+		Is Authenticated: @(User.Identity.IsAuthenticated)
+	</li>
+	<li>
+		Authentication Type: @(User.Identity.AuthenticationType)
+	</li>
+</ul>
+
+<hr />
+
+<h3>
+	Claims
+</h3>
+
+<ul>
+	@foreach (var claim in User.Claims)
+	{
+		<li>
+			Issuer: @(claim.Issuer)
+			<br />
+			Original Issuer: @(claim.OriginalIssuer)
+			<br />
+			Subject: @(claim.Subject)
+			<br />
+			Type: @(claim.Type)
+			<br />
+			Value: @(claim.Value)
+			<br />
+			Value Type: @(claim.ValueType)
+			<br />
+			Properties.Count: @(claim.Properties.Count)
+		</li>
+	}
+</ul>
+
+<hr />

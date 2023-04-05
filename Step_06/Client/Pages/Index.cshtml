@@ -1,0 +1,109 @@
+﻿@page
+
+@model Client.Pages.IndexModel
+
+@inject Infrastructure.Security.AuthenticatedUserService AuthenticatedUserService
+
+<h3>
+	Page: Home
+</h3>
+
+@if (AuthenticatedUserService.IsAuthenticated)
+{
+	<hr />
+	<b>Welcome @(AuthenticatedUserService.Name)!</b>
+}
+
+<hr />
+
+<a href="~/Index">Home</a>
+
+@if (AuthenticatedUserService.IsAuthenticated)
+{
+	<text>| </text>
+	<a href="~/MySecuredPage">My Secured Page</a>
+
+	@*New*@
+	<text>| </text>
+	<a href="~/Account/AuthenticatedUserInformation">Authenticated User Information</a>
+
+	@*New*@
+	<text>| </text>
+	<a href="~/MyAdminPage">My Admin Page</a>
+}
+
+@if (AuthenticatedUserService.IsAuthenticated)
+{
+	<text>| </text>
+	<a href="~/Account/Login">Login</a>
+
+	<text>| </text>
+	<a href="~/Account/Register">Register</a>
+}
+
+@if (AuthenticatedUserService.IsAuthenticated)
+{
+	<text>| </text>
+	<a href="~/Account/Logout">Logout</a>
+}
+
+@if (AuthenticatedUserService.IsAuthenticated)
+{
+	<text>| </text>
+	<a href="~/Account/AccessDenied">Access Denied</a>
+}
+
+|
+<a href="~/My/Index">My Controller: Index</a>
+
+@if (AuthenticatedUserService.IsAuthenticated)
+{
+	<text>| </text>
+	<a href="~/My/MySecuredAction">My Controller: My Secured Action</a>
+}
+
+|
+<a href="~/api/MyApi">My Api: (GET)</a>
+
+@if (AuthenticatedUserService.IsAuthenticated)
+{
+	<text>| </text>
+	<button onclick="getData()" type="button">My Api: POST</button>
+}
+
+<hr />
+
+<script>
+
+	function getData() {
+
+		let request = null
+
+		fetch('/api/MyApi', {
+
+			method: 'POST',
+
+			headers: {
+				'Accept': 'application/json; charset=UTF-8',
+				'Content-Type': 'application/json; charset=UTF-8'
+			},
+
+			body: JSON.stringify(request)
+
+		})
+			.then(response => response.json())
+
+			.then(data => {
+
+				console.log(JSON.stringify(data))
+
+			})
+			.catch(error => {
+
+				console.error('Error 401 - Unauthorize!')
+
+			})
+
+	}
+
+</script>
