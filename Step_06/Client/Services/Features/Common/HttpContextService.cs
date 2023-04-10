@@ -5,14 +5,14 @@ namespace Services.Features.Common;
 public class HttpContextService : object
 {
 	public HttpContextService
-		(IHttpContextAccessor httpContextAccessor) : base()
+		(Microsoft.AspNetCore.Http.IHttpContextAccessor httpContextAccessor) : base()
 	{
 		HttpContextAccessor = httpContextAccessor;
 	}
 
 	#region Properties
 
-	private IHttpContextAccessor HttpContextAccessor { get; init; }
+	private Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor { get; init; }
 
 	#endregion /Properties
 
@@ -32,7 +32,8 @@ public class HttpContextService : object
 		}
 
 		// using Microsoft.AspNetCore.Http;
-		var typedHeaders = HttpContextAccessor
+		var typedHeaders =
+			HttpContextAccessor
 			.HttpContext.Request.GetTypedHeaders();
 
 		var result =
@@ -68,7 +69,7 @@ public class HttpContextService : object
 
 	#region GetCurrentHostName()
 	/// <summary>
-	/// Domain Name - IranianExperts.ir
+	/// Site Domain Name: IranianExperts.ir
 	/// </summary>
 	public string? GetCurrentHostName()
 	{
@@ -82,7 +83,8 @@ public class HttpContextService : object
 			return null;
 		}
 
-		var result = HttpContextAccessor
+		var result =
+			HttpContextAccessor
 			.HttpContext.Request.Host.Value.ToLower();
 
 		return result;
@@ -91,7 +93,7 @@ public class HttpContextService : object
 
 	#region GetCurrentHostProtocol()
 	/// <summary>
-	/// HTTP or HTTPS
+	/// Site Protocol: HTTP or HTTPS
 	/// </summary>
 	public string? GetCurrentHostProtocol()
 	{
@@ -106,7 +108,8 @@ public class HttpContextService : object
 		}
 
 		var result =
-			HttpContextAccessor.HttpContext.Request.Scheme;
+			HttpContextAccessor
+			.HttpContext.Request.Scheme;
 
 		return result;
 	}
@@ -118,22 +121,24 @@ public class HttpContextService : object
 	/// </summary>
 	public string? GetCurrentHostUrl()
 	{
-		var currentDomainName = GetCurrentHostName();
+		var currentHostName =
+			GetCurrentHostName();
 
-		if (currentDomainName is null)
+		if (currentHostName is null)
 		{
 			return null;
 		}
 
-		var currentSiteScheme = GetCurrentHostProtocol();
+		var currentHostProtocol =
+			GetCurrentHostProtocol();
 
-		if (currentSiteScheme is null)
+		if (currentHostProtocol is null)
 		{
 			return null;
 		}
 
 		var result =
-			$"{currentSiteScheme}://{currentDomainName}";
+			$"{currentHostProtocol}://{currentHostName}";
 
 		return result;
 	}
