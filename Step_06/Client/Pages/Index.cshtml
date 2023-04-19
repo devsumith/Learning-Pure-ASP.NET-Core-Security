@@ -1,7 +1,5 @@
 ﻿@page
-
 @model Client.Pages.IndexModel
-
 @inject Infrastructure.Security.AuthenticatedUserService AuthenticatedUserService
 
 <h3>
@@ -32,7 +30,7 @@
 	<a href="~/MyAdminPage">My Admin Page</a>
 }
 
-@if (AuthenticatedUserService.IsAuthenticated)
+@if (AuthenticatedUserService.IsAuthenticated == false)
 {
 	<text>| </text>
 	<a href="~/Account/Login">Login</a>

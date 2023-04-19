@@ -57,6 +57,82 @@ public class AuthenticatedUserService : object
 	}
 	#endregion /public string? Name { get; }
 
+	#region public string? Role { get; }
+	public string? Role
+	{
+		get
+		{
+			var value = GetClaimValue
+				(keyName: System.Security.Claims.ClaimTypes.Role);
+
+			if (string.IsNullOrWhiteSpace(value: value))
+			{
+				return null;
+			}
+
+			return value;
+		}
+	}
+	#endregion /public string? Role { get; }
+
+
+
+	#region public string? LastName { get; }
+	public string? LastName
+	{
+		get
+		{
+			var value = GetClaimValue
+				(keyName: Constants.LastNameClaimKeyName);
+
+			if (string.IsNullOrWhiteSpace(value: value))
+			{
+				return null;
+			}
+
+			return value;
+		}
+	}
+	#endregion /public string? LastName { get; }
+
+	#region public string? FirstName { get; }
+	public string? FirstName
+	{
+		get
+		{
+			var value = GetClaimValue
+				(keyName: Constants.FirstNameClaimKeyName);
+
+			if (string.IsNullOrWhiteSpace(value: value))
+			{
+				return null;
+			}
+
+			return value;
+		}
+	}
+	#endregion /public string? FirstName { get; }
+
+
+
+	#region public string? UserIP { get; }
+	public string? UserIP
+	{
+		get
+		{
+			var value = GetClaimValue
+				(keyName: Constants.UserIPClaimKeyName);
+
+			if (string.IsNullOrWhiteSpace(value: value))
+			{
+				return null;
+			}
+
+			return value;
+		}
+	}
+	#endregion /public string? UserIP { get; }
+
 	#region public string? Username { get; }
 	public string? Username
 	{
@@ -75,13 +151,13 @@ public class AuthenticatedUserService : object
 	}
 	#endregion /public string? Username { get; }
 
-	#region public string? RoleName { get; }
-	public string? RoleName
+	#region public string? EmailAddress { get; }
+	public string? EmailAddress
 	{
 		get
 		{
 			var value = GetClaimValue
-				(keyName: System.Security.Claims.ClaimTypes.Role);
+				(keyName: Constants.EmailAddressClaimKeyName);
 
 			if (string.IsNullOrWhiteSpace(value: value))
 			{
@@ -91,7 +167,27 @@ public class AuthenticatedUserService : object
 			return value;
 		}
 	}
-	#endregion /public string? RoleName { get; }
+	#endregion /public string? EmailAddress { get; }
+
+	#region public string? CellPhoneNumber { get; }
+	public string? CellPhoneNumber
+	{
+		get
+		{
+			var value = GetClaimValue
+				(keyName: Constants.CellPhoneNumberClaimKeyName);
+
+			if (string.IsNullOrWhiteSpace(value: value))
+			{
+				return null;
+			}
+
+			return value;
+		}
+	}
+	#endregion /public string? CellPhoneNumber { get; }
+
+
 
 	#region public System.Guid? UserId { get; }
 	public System.Guid? UserId
@@ -121,24 +217,6 @@ public class AuthenticatedUserService : object
 	}
 	#endregion /public System.Guid? UserId { get; }
 
-	#region public string? EmailAddress { get; }
-	public string? EmailAddress
-	{
-		get
-		{
-			var value = GetClaimValue
-				(keyName: Constants.EmailAddressClaimKeyName);
-
-			if (string.IsNullOrWhiteSpace(value: value))
-			{
-				return null;
-			}
-
-			return value;
-		}
-	}
-	#endregion /public string? EmailAddress { get; }
-
 	#region public System.Guid? SessionId { get; }
 	public System.Guid? SessionId
 	{
@@ -166,6 +244,8 @@ public class AuthenticatedUserService : object
 		}
 	}
 	#endregion /public System.Guid? SessionId { get; }
+
+
 
 	#region public Domain.Features.Identity.Enums.RoleEnum RoleCode { get; }
 	public Domain.Features.Identity.Enums.RoleEnum RoleCode

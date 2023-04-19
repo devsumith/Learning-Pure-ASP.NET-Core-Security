@@ -7,6 +7,10 @@ public static class Constants : object
 		.CookieAuthenticationDefaults.AuthenticationScheme;
 
 	public const string UserIdClaimKeyName = "UserId";
+
+	//public const string UserIdClaimKeyName =
+	//	System.Security.Claims.ClaimTypes.NameIdentifier;
+
 	public const string UserIPClaimKeyName = "UserIP";
 	public const string LastNameClaimKeyName = "LastName";
 	public const string RoleCodeClaimKeyName = "RoleCode";
@@ -15,6 +19,9 @@ public static class Constants : object
 	public const string SessionIdClaimKeyName = "SessionId";
 	public const string EmailAddressClaimKeyName = "EmailAddress";
 	public const string CellPhoneNumberClaimKeyName = "CellPhoneNumber";
+
+	public const string NameKeyName = System.Security.Claims.ClaimTypes.Name;
+	public const string RoleKeyName = System.Security.Claims.ClaimTypes.Role;
 
 	static Constants()
 	{

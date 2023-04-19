@@ -1,6 +1,6 @@
 ﻿@page
-
 @model Client.Pages.Account.AuthenticatedUserInformationModel
+@inject Infrastructure.Security.AuthenticatedUserService AuthenticatedUserService
 
 <h3>
 	Page: Authenticated User Information
@@ -50,6 +50,55 @@
 			Properties.Count: @(claim.Properties.Count)
 		</li>
 	}
+</ul>
+
+<hr />
+
+<h3>
+	Strongly Typed Claims
+</h3>
+
+<ul>
+	<li>
+		Is Authenticated: @(AuthenticatedUserService.IsAuthenticated)
+	</li>
+
+	<li>
+		Name: @(AuthenticatedUserService.Name)
+	</li>
+	<li>
+		Role: @(AuthenticatedUserService.Role)
+	</li>
+
+	<li>
+		User IP: @(AuthenticatedUserService.UserIP)
+	</li>
+	<li>
+		Last Name: @(AuthenticatedUserService.LastName)
+	</li>
+	<li>
+		First Name: @(AuthenticatedUserService.FirstName)
+	</li>
+	<li>
+		Username: @(AuthenticatedUserService.Username)
+	</li>
+	<li>
+		Email Address: @(AuthenticatedUserService.EmailAddress)
+	</li>
+	<li>
+		Cell Phone Number: @(AuthenticatedUserService.CellPhoneNumber)
+	</li>
+
+	<li>
+		User Id: @(AuthenticatedUserService.UserId)
+	</li>
+	<li>
+		Session Id: @(AuthenticatedUserService.SessionId)
+	</li>
+
+	<li>
+		Role Code: @((int)AuthenticatedUserService.RoleCode) - @(AuthenticatedUserService.RoleCode)
+	</li>
 </ul>
 
 <hr />
