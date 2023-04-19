@@ -1,5 +1,4 @@
 ﻿@page
-
 @model Client.Pages.IndexModel
 
 @{
@@ -25,7 +24,7 @@
 @if (isAuthenticated)
 {
 	<hr />
-	<b>Welcome @(User.Identity!.Name)!</b>
+	<b>Welcome @(User.Identity?.Name)!</b>
 }
 
 <hr />

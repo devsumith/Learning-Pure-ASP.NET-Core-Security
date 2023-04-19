@@ -6,6 +6,12 @@ public static class Constants : object
 		Microsoft.AspNetCore.Authentication.Cookies
 		.CookieAuthenticationDefaults.AuthenticationScheme;
 
+	public const string NameKeyName =
+		System.Security.Claims.ClaimTypes.Name;
+
+	public const string RoleKeyName =
+		System.Security.Claims.ClaimTypes.Role;
+
 	public const string UserIdClaimKeyName = "UserId";
 
 	//public const string UserIdClaimKeyName =
@@ -19,9 +25,6 @@ public static class Constants : object
 	public const string SessionIdClaimKeyName = "SessionId";
 	public const string EmailAddressClaimKeyName = "EmailAddress";
 	public const string CellPhoneNumberClaimKeyName = "CellPhoneNumber";
-
-	public const string NameKeyName = System.Security.Claims.ClaimTypes.Name;
-	public const string RoleKeyName = System.Security.Claims.ClaimTypes.Role;
 
 	static Constants()
 	{

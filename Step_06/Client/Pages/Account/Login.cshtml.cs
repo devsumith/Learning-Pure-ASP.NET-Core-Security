@@ -259,14 +259,12 @@ public class LoginModel :
 			new System.Security.Claims
 			.ClaimsPrincipal(identity: claimsIdentity);
 
-		// New
 		var authenticationProperties = new Microsoft
 			.AspNetCore.Authentication.AuthenticationProperties
 		{
 			IsPersistent = ViewModel.RememberMe,
 		};
 
-		// New
 		await HttpContext.SignInAsync(scheme: Infrastructure.Security.Constants
 			.DefaultScheme, principal: claimsPrincipal, properties: authenticationProperties);
 
