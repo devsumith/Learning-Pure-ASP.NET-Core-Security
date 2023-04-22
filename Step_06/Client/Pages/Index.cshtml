@@ -6,6 +6,52 @@
 	Page: Home
 </h3>
 
+@{
+	// فلسفه کلاس
+	// AuthenticatedUserService
+
+	var currentRoleCode =
+		Domain.Features.Identity.Enums.RoleEnum.SimpleUser;
+
+	if (User.Identity is not null && User.Identity.IsAuthenticated)
+	{
+		var claim =
+			User.Claims
+			.Where(current => current.Type.ToLower() ==
+				Infrastructure.Security.Constants.RoleCodeClaimKeyName.ToLower())
+			.FirstOrDefault();
+
+		if (claim is not null)
+		{
+			var claimValue = claim.Value;
+
+			if (string.IsNullOrWhiteSpace(value: claimValue) == false)
+			{
+				try
+				{
+					currentRoleCode =
+						(Domain.Features.Identity.Enums.RoleEnum)
+						System.Convert.ToInt32(value: claimValue);
+				}
+				catch { }
+			}
+		}
+	}
+
+	// !که تقریبا نابود می‌شویم
+	if(currentRoleCode == Domain.Features.Identity.Enums.RoleEnum.Administrator)
+	{
+		// ...
+	}
+
+	// در صورتی که با این کلاس می‌توانیم
+	// ها دسترسی داشته باشیم Claim به سادگی، به همه
+	if(AuthenticatedUserService.RoleCode == Domain.Features.Identity.Enums.RoleEnum.Administrator)
+	{
+		// ...
+	}
+}
+
 @if (AuthenticatedUserService.IsAuthenticated)
 {
 	<hr />

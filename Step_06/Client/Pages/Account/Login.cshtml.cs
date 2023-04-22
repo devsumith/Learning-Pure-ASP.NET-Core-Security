@@ -6,7 +6,8 @@ public class LoginModel :
 	Microsoft.AspNetCore.Mvc.RazorPages.PageModel
 {
 	#region Constructor
-	public LoginModel(Services.Features.Common.HttpContextService httpContextService) : base()
+	public LoginModel(Services.Features
+		.Common.HttpContextService httpContextService) : base()
 	{
 		ViewModel = new();
 		HttpContextService = httpContextService;
@@ -212,8 +213,8 @@ public class LoginModel :
 
 		if (string.IsNullOrWhiteSpace(value: cellPhoneNumber) == false)
 		{
-			claim = new System.Security.Claims.Claim(type:
-				Infrastructure.Security.Constants.CellPhoneNumberClaimKeyName, value: cellPhoneNumber);
+			claim = new System.Security.Claims.Claim(type: Infrastructure
+				.Security.Constants.CellPhoneNumberClaimKeyName, value: cellPhoneNumber);
 
 			claims.Add(item: claim);
 		}

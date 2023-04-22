@@ -45,12 +45,7 @@ public class AuthenticatedUserService : object
 		get
 		{
 			var value = GetClaimValue
-				(keyName: System.Security.Claims.ClaimTypes.Name);
-
-			if (string.IsNullOrWhiteSpace(value: value))
-			{
-				return null;
-			}
+				(keyName: Constants.NameKeyName);
 
 			return value;
 		}
@@ -63,12 +58,7 @@ public class AuthenticatedUserService : object
 		get
 		{
 			var value = GetClaimValue
-				(keyName: System.Security.Claims.ClaimTypes.Role);
-
-			if (string.IsNullOrWhiteSpace(value: value))
-			{
-				return null;
-			}
+				(keyName: Constants.RoleKeyName);
 
 			return value;
 		}
@@ -85,11 +75,6 @@ public class AuthenticatedUserService : object
 			var value = GetClaimValue
 				(keyName: Constants.LastNameClaimKeyName);
 
-			if (string.IsNullOrWhiteSpace(value: value))
-			{
-				return null;
-			}
-
 			return value;
 		}
 	}
@@ -102,11 +87,6 @@ public class AuthenticatedUserService : object
 		{
 			var value = GetClaimValue
 				(keyName: Constants.FirstNameClaimKeyName);
-
-			if (string.IsNullOrWhiteSpace(value: value))
-			{
-				return null;
-			}
 
 			return value;
 		}
@@ -123,11 +103,6 @@ public class AuthenticatedUserService : object
 			var value = GetClaimValue
 				(keyName: Constants.UserIPClaimKeyName);
 
-			if (string.IsNullOrWhiteSpace(value: value))
-			{
-				return null;
-			}
-
 			return value;
 		}
 	}
@@ -140,11 +115,6 @@ public class AuthenticatedUserService : object
 		{
 			var value = GetClaimValue
 				(keyName: Constants.UsernameClaimKeyName);
-
-			if (string.IsNullOrWhiteSpace(value: value))
-			{
-				return null;
-			}
 
 			return value;
 		}
@@ -159,11 +129,6 @@ public class AuthenticatedUserService : object
 			var value = GetClaimValue
 				(keyName: Constants.EmailAddressClaimKeyName);
 
-			if (string.IsNullOrWhiteSpace(value: value))
-			{
-				return null;
-			}
-
 			return value;
 		}
 	}
@@ -176,11 +141,6 @@ public class AuthenticatedUserService : object
 		{
 			var value = GetClaimValue
 				(keyName: Constants.CellPhoneNumberClaimKeyName);
-
-			if (string.IsNullOrWhiteSpace(value: value))
-			{
-				return null;
-			}
 
 			return value;
 		}
@@ -283,15 +243,27 @@ public class AuthenticatedUserService : object
 	#region GetClaimValue()
 	private string? GetClaimValue(string? keyName)
 	{
+		if (string.IsNullOrWhiteSpace(value: keyName))
+		{
+			return null;
+		}
+
 		if (User is null)
 		{
 			return null;
 		}
 
-		if (string.IsNullOrWhiteSpace(value: keyName))
-		{
-			return null;
-		}
+		// نیازی به نوشتن دستور ذیل نیست
+		//if (User.Claims is null)
+		//{
+		//	return null;
+		//}
+
+		// نیازی به نوشتن دستور ذیل نیست
+		//if (User.Claims.Count() == 0)
+		//{
+		//	return null;
+		//}
 
 		var claim =
 			User.Claims
@@ -306,7 +278,15 @@ public class AuthenticatedUserService : object
 		var value =
 			claim.Value;
 
-		return value;
+		if (string.IsNullOrWhiteSpace(value: value))
+		{
+			return null;
+		}
+
+		var result =
+			value.Trim();
+
+		return result;
 	}
 	#endregion /GetClaimValue()
 
