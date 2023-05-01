@@ -1,11 +1,18 @@
-namespace Client.Pages;
+﻿namespace Client.Pages;
 
-[Infrastructure.Security.CustomAuthorize]
+// قدیم
+//[Microsoft.AspNetCore.Authorization.Authorize]
+
+//[Microsoft.AspNetCore.Authorization.Authorize
+//	(Roles = nameof(Domain.Features.Identity.Enums.RoleEnum.SimpleUser))]
+
+// جدید
+//[Infrastructure.Security.CustomAuthorize(minRoleCode:
+//	Domain.Features.Identity.Enums.RoleEnum.SimpleUser)]
 
 //[Infrastructure.Security.CustomAuthorize()]
 
-//[Infrastructure.Security.CustomAuthorize(minRoleCode:
-//	Domain.Features.Identity.Enums.RoleEnum.SimpleUser)]
+[Infrastructure.Security.CustomAuthorize]
 public class MySecuredPage1Model :
 	Microsoft.AspNetCore.Mvc.RazorPages.PageModel
 {

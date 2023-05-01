@@ -95,13 +95,13 @@ public class LoginModel :
 					return Page();
 				}
 
-				roleCode = Domain.Features
-					.Identity.Enums.RoleEnum.SpecialUser;
-
 				firstName = "Ali Reza";
 				lastName = "Alavi";
 				cellPhoneNumber = "09121087462";
 				emailAddress = "Alavi@Gmail.com";
+
+				roleCode = Domain.Features
+					.Identity.Enums.RoleEnum.SpecialUser;
 
 				role = roleCode.ToString();
 
@@ -121,13 +121,13 @@ public class LoginModel :
 					return Page();
 				}
 
-				roleCode = Domain.Features
-					.Identity.Enums.RoleEnum.Supervisor;
-
 				firstName = "Mohammad";
 				lastName = "Ghaderi";
 				cellPhoneNumber = "09121087463";
 				emailAddress = "Ghaderi@Gmail.com";
+
+				roleCode = Domain.Features
+					.Identity.Enums.RoleEnum.Supervisor;
 
 				role = roleCode.ToString();
 
@@ -147,13 +147,13 @@ public class LoginModel :
 					return Page();
 				}
 
-				roleCode = Domain.Features
-					.Identity.Enums.RoleEnum.Administrator;
-
 				firstName = "Shahrouz";
 				lastName = "Rahmani";
 				cellPhoneNumber = "09121087464";
 				emailAddress = "Rahmani@Gmail.com";
+
+				roleCode = Domain.Features
+					.Identity.Enums.RoleEnum.Administrator;
 
 				role = roleCode.ToString();
 
