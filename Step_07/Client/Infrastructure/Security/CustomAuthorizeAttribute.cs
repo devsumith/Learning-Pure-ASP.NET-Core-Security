@@ -16,33 +16,33 @@ public class CustomAuthorizeAttribute : System.Attribute,
 
 	protected Domain.Features.Identity.Enums.RoleEnum MinRoleCode { get; init; }
 
-	public void OnAuthorization
-		(Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext context)
+	public void OnAuthorization(Microsoft.AspNetCore
+		.Mvc.Filters.AuthorizationFilterContext context)
 	{
 		var services =
 			context.HttpContext.RequestServices;
 
 		// **************************************************
-		var authenticatedUserService =
-			services.GetService<AuthenticatedUserService>();
+		var authenticatedUserService = services
+			.GetService<AuthenticatedUserService>();
 
 		if (authenticatedUserService == null)
 		{
-			context.Result =
-				new Microsoft.AspNetCore.Mvc.BadRequestResult();
+			context.Result = new Microsoft
+				.AspNetCore.Mvc.BadRequestResult();
 
 			return;
 		}
 		// **************************************************
 
 		// **************************************************
-		var httpContextService =
-			services.GetService<Services.Features.Common.HttpContextService>();
+		var httpContextService = services.GetService
+			<Services.Features.Common.HttpContextService>();
 
 		if (httpContextService == null)
 		{
-			context.Result =
-				new Microsoft.AspNetCore.Mvc.BadRequestResult();
+			context.Result = new Microsoft
+				.AspNetCore.Mvc.BadRequestResult();
 
 			return;
 		}
@@ -51,8 +51,8 @@ public class CustomAuthorizeAttribute : System.Attribute,
 		// **************************************************
 		if (authenticatedUserService.IsAuthenticated == false)
 		{
-			context.Result =
-				new Microsoft.AspNetCore.Mvc.ChallengeResult
+			context.Result = new Microsoft
+				.AspNetCore.Mvc.ChallengeResult
 				(authenticationScheme: Constants.DefaultScheme);
 
 			return;
@@ -67,8 +67,8 @@ public class CustomAuthorizeAttribute : System.Attribute,
 
 		if (string.IsNullOrWhiteSpace(value: remoteIp))
 		{
-			context.Result =
-				new Microsoft.AspNetCore.Mvc.BadRequestResult();
+			context.Result = new Microsoft
+				.AspNetCore.Mvc.BadRequestResult();
 
 			return;
 		}
@@ -80,8 +80,8 @@ public class CustomAuthorizeAttribute : System.Attribute,
 
 		if (string.IsNullOrWhiteSpace(value: userIP))
 		{
-			context.Result =
-				new Microsoft.AspNetCore.Mvc.BadRequestResult();
+			context.Result = new Microsoft
+				.AspNetCore.Mvc.BadRequestResult();
 
 			return;
 		}
@@ -90,8 +90,8 @@ public class CustomAuthorizeAttribute : System.Attribute,
 		// **************************************************
 		if (userIP != remoteIp)
 		{
-			context.Result =
-				new Microsoft.AspNetCore.Mvc.ChallengeResult
+			context.Result = new Microsoft
+				.AspNetCore.Mvc.ChallengeResult
 				(authenticationScheme: Constants.DefaultScheme);
 
 			return;
