@@ -7,6 +7,8 @@
 //	(Roles = nameof(Domain.Features.Identity.Enums.RoleEnum.SimpleUser))]
 
 // جدید
+//[Infrastructure.Security.CustomAuthorizeAttribute]
+
 //[Infrastructure.Security.CustomAuthorize(minRoleCode:
 //	Domain.Features.Identity.Enums.RoleEnum.SimpleUser)]
 
