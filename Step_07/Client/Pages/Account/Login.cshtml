@@ -1,0 +1,43 @@
+﻿@page
+
+@model Client.Pages.Account.LoginModel
+
+@*دستور ذیل بسیار مهم می‌باشد*@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<h3>
+	Login
+</h3>
+
+<form method="post" autocomplete="off">
+
+	<input type="hidden" asp-for="ViewModel.ReturnUrl" />
+
+	<div asp-validation-summary="All"></div>
+
+	<label asp-for="ViewModel.Username"></label>
+	<br />
+	<input type="text" asp-for="ViewModel.Username" autocomplete="off" />
+	<span asp-validation-for="ViewModel.Username"></span>
+
+	<br />
+
+	<label asp-for="ViewModel.Password"></label>
+	<br />
+	<input type="password" asp-for="ViewModel.Password" autocomplete="off" />
+	<span asp-validation-for="ViewModel.Password"></span>
+
+	<br />
+
+	<label asp-for="ViewModel.RememberMe"></label>
+	<br />
+	<input type="checkbox" asp-for="ViewModel.RememberMe" />
+	<span asp-validation-for="ViewModel.RememberMe"></span>
+
+	<br />
+	<br />
+
+	<button type="submit">Login</button>
+	<button type="reset">Reset</button>
+
+</form>

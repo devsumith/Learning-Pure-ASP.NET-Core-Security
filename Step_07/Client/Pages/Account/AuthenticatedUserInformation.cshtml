@@ -1,0 +1,123 @@
+﻿@page
+@model Client.Pages.Account.AuthenticatedUserInformationModel
+@inject Infrastructure.Security.AuthenticatedUserService AuthenticatedUserService
+
+<h3>
+	Authenticated User Information
+</h3>
+
+@if (User.Identity is null || User.Identity.IsAuthenticated == false)
+{
+	return;
+}
+
+<div dir="ltr">
+
+	<ul>
+		<li>
+			Is Authenticated: @(User.Identity.IsAuthenticated)
+		</li>
+		<li>
+			Name: @(User.Identity.Name)
+		</li>
+		<li>
+			Authentication Type: @(User.Identity.AuthenticationType)
+		</li>
+	</ul>
+
+	<hr />
+
+	<h3>
+		Claims
+	</h3>
+
+	<ul>
+		@foreach (var claim in User.Claims)
+		{
+			<li>
+				Issuer: @(claim.Issuer)
+				<br />
+				Original Issuer: @(claim.OriginalIssuer)
+				<br />
+				Subject: @(claim.Subject)
+
+				<div class="text-warning">
+					<br />
+					<b>Type: @(claim.Type)</b>
+					<br />
+					<b>Value: @(claim.Value)</b>
+				</div>
+
+				<br />
+				Value Type: @(claim.ValueType)
+				<br />
+				Properties.Count: @(claim.Properties.Count)
+			</li>
+		}
+	</ul>
+
+	<hr />
+
+	<h3>
+		Strongly Typed Claims
+	</h3>
+
+	<ul>
+		<li>
+			<b>Is Authenticated:</b>
+			@(AuthenticatedUserService.IsAuthenticated)
+		</li>
+
+		<li>
+			<b>Name:</b>
+			@(AuthenticatedUserService.Name)
+		</li>
+		<li>
+			<b>Role:</b>
+			@(AuthenticatedUserService.Role)
+		</li>
+
+		<li>
+			<b>User IP:</b>
+			@(AuthenticatedUserService.UserIP)
+		</li>
+		<li>
+			<b>Last Name:</b>
+			@(AuthenticatedUserService.LastName)
+		</li>
+		<li>
+			<b>First Name:</b>
+			@(AuthenticatedUserService.FirstName)
+		</li>
+		<li>
+			<b>Username:</b>
+			@(AuthenticatedUserService.Username)
+		</li>
+		<li>
+			<b>Email Address:</b>
+			@(AuthenticatedUserService.EmailAddress)
+		</li>
+		<li>
+			<b>Cell Phone Number:</b>
+			@(AuthenticatedUserService.CellPhoneNumber)
+		</li>
+
+		<li>
+			<b>User Id:</b>
+			@(AuthenticatedUserService.UserId)
+		</li>
+		<li>
+			<b>Session Id:</b>
+			@(AuthenticatedUserService.SessionId)
+		</li>
+
+		<li>
+			<b>Role Code:</b>
+			@((int)AuthenticatedUserService.RoleCode)
+			- @(AuthenticatedUserService.RoleCode)
+		</li>
+	</ul>
+
+	<hr />
+
+</div>

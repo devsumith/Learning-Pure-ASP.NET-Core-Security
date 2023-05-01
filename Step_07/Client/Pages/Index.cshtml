@@ -1,0 +1,113 @@
+﻿@page
+@model Client.Pages.IndexModel
+@inject Infrastructure.Security.AuthenticatedUserService AuthenticatedUserService
+
+<h3>
+	Page: Home
+</h3>
+
+<hr />
+
+@if (AuthenticatedUserService.IsAuthenticated)
+{
+	<b>Welcome @(AuthenticatedUserService.Name)!</b>
+	<text>| </text>
+	<a href="~/Account/Logout">Logout</a>
+}
+else
+{
+	<text>| </text>
+	<a href="~/Account/Login">Login</a>
+
+	<text>| </text>
+	<a href="~/Account/Register">Register</a>
+}
+
+<hr />
+
+<a href="~/Index">Home</a>
+
+@if (AuthenticatedUserService.IsAuthenticated)
+{
+	@*New*@
+	<text>| </text>
+	<a href="~/MySecuredPage1">My Secured Page (1)</a>
+
+	@*New*@
+	<text>| </text>
+	<a href="~/MySecuredPage2">My Secured Page (2)</a>
+
+	@*New*@
+	<text>| </text>
+	<a href="~/MySecuredPage3">My Secured Page (3)</a>
+
+	@*New*@
+	<text>| </text>
+	<a href="~/MySecuredPage4">My Secured Page (4)</a>
+
+	@*New*@
+	<text>| </text>
+	<a href="~/MySecuredPage5">My Secured Page (5)</a>
+
+	@*New*@
+	<text>| </text>
+	<a href="~/MySecuredPage6">My Secured Page (6)</a>
+
+	<text>| </text>
+	<a href="~/Account/AuthenticatedUserInformation">Authenticated User Information</a>
+}
+
+|
+<a href="~/My/Index">My Controller: Index</a>
+
+@if (AuthenticatedUserService.IsAuthenticated)
+{
+	<text>| </text>
+	<a href="~/My/MySecuredAction">My Controller: My Secured Action</a>
+}
+
+|
+<a href="~/api/MyApi">My Api: (GET)</a>
+
+@if (AuthenticatedUserService.IsAuthenticated)
+{
+	<text>| </text>
+	<button onclick="getData()" type="button">My Api: POST</button>
+}
+
+<hr />
+
+<script>
+
+	function getData() {
+
+		let request = null
+
+		fetch('/api/MyApi', {
+
+			method: 'POST',
+
+			headers: {
+				'Accept': 'application/json; charset=UTF-8',
+				'Content-Type': 'application/json; charset=UTF-8'
+			},
+
+			body: JSON.stringify(request)
+
+		})
+			.then(response => response.json())
+
+			.then(data => {
+
+				console.log(JSON.stringify(data))
+
+			})
+			.catch(error => {
+
+				console.error('Error 401 - Unauthorize!')
+
+			})
+
+	}
+
+</script>
