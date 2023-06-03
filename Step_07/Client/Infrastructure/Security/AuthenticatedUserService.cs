@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using static Infrastructure.Security.Constants;
 
 namespace Infrastructure.Security;
 
@@ -45,7 +46,7 @@ public class AuthenticatedUserService : object
 		get
 		{
 			var value = GetClaimValue
-				(keyName: Constants.NameKeyName);
+				(keyName: Constants.ClaimKeyName.Name);
 
 			return value;
 		}
@@ -58,7 +59,7 @@ public class AuthenticatedUserService : object
 		get
 		{
 			var value = GetClaimValue
-				(keyName: Constants.RoleKeyName);
+				(keyName: Constants.ClaimKeyName.Role);
 
 			return value;
 		}
@@ -73,7 +74,7 @@ public class AuthenticatedUserService : object
 		get
 		{
 			var value = GetClaimValue
-				(keyName: Constants.LastNameClaimKeyName);
+				(keyName: Constants.ClaimKeyName.LastName);
 
 			return value;
 		}
@@ -86,7 +87,7 @@ public class AuthenticatedUserService : object
 		get
 		{
 			var value = GetClaimValue
-				(keyName: Constants.FirstNameClaimKeyName);
+				(keyName: Constants.ClaimKeyName.FirstName);
 
 			return value;
 		}
@@ -101,7 +102,7 @@ public class AuthenticatedUserService : object
 		get
 		{
 			var value = GetClaimValue
-				(keyName: Constants.UserIPClaimKeyName);
+				(keyName: Constants.ClaimKeyName.UserIP);
 
 			return value;
 		}
@@ -114,7 +115,7 @@ public class AuthenticatedUserService : object
 		get
 		{
 			var value = GetClaimValue
-				(keyName: Constants.UsernameClaimKeyName);
+				(keyName: Constants.ClaimKeyName.Username);
 
 			return value;
 		}
@@ -127,7 +128,7 @@ public class AuthenticatedUserService : object
 		get
 		{
 			var value = GetClaimValue
-				(keyName: Constants.EmailAddressClaimKeyName);
+				(keyName: Constants.ClaimKeyName.EmailAddress);
 
 			return value;
 		}
@@ -140,7 +141,7 @@ public class AuthenticatedUserService : object
 		get
 		{
 			var value = GetClaimValue
-				(keyName: Constants.CellPhoneNumberClaimKeyName);
+				(keyName: Constants.ClaimKeyName.CellPhoneNumber);
 
 			return value;
 		}
@@ -155,7 +156,7 @@ public class AuthenticatedUserService : object
 		get
 		{
 			var value = GetClaimValue
-				(keyName: Constants.UserIdClaimKeyName);
+				(keyName: Constants.ClaimKeyName.UserId);
 
 			if (value is null)
 			{
@@ -183,7 +184,7 @@ public class AuthenticatedUserService : object
 		get
 		{
 			var value = GetClaimValue
-				(keyName: Constants.SessionIdClaimKeyName);
+				(keyName: Constants.ClaimKeyName.SessionId);
 
 			if (value is null)
 			{
@@ -213,7 +214,7 @@ public class AuthenticatedUserService : object
 		get
 		{
 			var value = GetClaimValue
-				(keyName: Constants.RoleCodeClaimKeyName);
+				(keyName: Constants.ClaimKeyName.RoleCode);
 
 			if (value is null)
 			{

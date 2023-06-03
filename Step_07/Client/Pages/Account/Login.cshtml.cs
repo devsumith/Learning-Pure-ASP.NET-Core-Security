@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication;
+using static Infrastructure.Security.Constants;
 
 namespace Client.Pages.Account;
 
@@ -237,14 +238,14 @@ public class LoginModel :
 
 		// **************************************************
 		claim = new System.Security.Claims.Claim(type: Infrastructure.Security
-			.Constants.RoleCodeClaimKeyName, value: ((int)roleCode).ToString());
+			.Constants.ClaimKeyName.RoleCode, value: ((int)roleCode).ToString());
 
 		claims.Add(item: claim);
 		// **************************************************
 
 		// **************************************************
 		claim = new System.Security.Claims.Claim(type:
-			Infrastructure.Security.Constants.NameKeyName, value: ViewModel.Username);
+			Infrastructure.Security.Constants.ClaimKeyName.Name, value: ViewModel.Username);
 
 		claims.Add(item: claim);
 		// **************************************************
@@ -256,7 +257,7 @@ public class LoginModel :
 		if (string.IsNullOrWhiteSpace(value: userIP) == false)
 		{
 			claim = new System.Security.Claims.Claim(type:
-				Infrastructure.Security.Constants.UserIPClaimKeyName, value: userIP);
+				Infrastructure.Security.Constants.ClaimKeyName.UserIP, value: userIP);
 
 			claims.Add(item: claim);
 		}
@@ -267,7 +268,7 @@ public class LoginModel :
 			System.Guid.NewGuid();
 
 		claim = new System.Security.Claims.Claim(type:
-			Infrastructure.Security.Constants.UserIdClaimKeyName, value: userId.ToString());
+			Infrastructure.Security.Constants.ClaimKeyName.UserId, value: userId.ToString());
 
 		claims.Add(item: claim);
 		// **************************************************
@@ -277,14 +278,14 @@ public class LoginModel :
 			System.Guid.NewGuid();
 
 		claim = new System.Security.Claims.Claim(type:
-			Infrastructure.Security.Constants.SessionIdClaimKeyName, value: sessionId.ToString());
+			Infrastructure.Security.Constants.ClaimKeyName.SessionId, value: sessionId.ToString());
 
 		claims.Add(item: claim);
 		// **************************************************
 
 		// **************************************************
 		claim = new System.Security.Claims.Claim(type:
-			Infrastructure.Security.Constants.RoleKeyName, value: role);
+			Infrastructure.Security.Constants.ClaimKeyName.Role, value: role);
 
 		claims.Add(item: claim);
 		// **************************************************
@@ -292,7 +293,7 @@ public class LoginModel :
 		if (string.IsNullOrWhiteSpace(value: lastName) == false)
 		{
 			claim = new System.Security.Claims.Claim(type:
-				Infrastructure.Security.Constants.LastNameClaimKeyName, value: lastName);
+				Infrastructure.Security.Constants.ClaimKeyName.LastName, value: lastName);
 
 			claims.Add(item: claim);
 		}
@@ -300,7 +301,7 @@ public class LoginModel :
 		if (string.IsNullOrWhiteSpace(value: firstName) == false)
 		{
 			claim = new System.Security.Claims.Claim(type:
-				Infrastructure.Security.Constants.FirstNameClaimKeyName, value: firstName);
+				Infrastructure.Security.Constants.ClaimKeyName.FirstName, value: firstName);
 
 			claims.Add(item: claim);
 		}
@@ -308,7 +309,7 @@ public class LoginModel :
 		if (string.IsNullOrWhiteSpace(value: emailAddress) == false)
 		{
 			claim = new System.Security.Claims.Claim(type:
-				Infrastructure.Security.Constants.EmailAddressClaimKeyName, value: emailAddress);
+				Infrastructure.Security.Constants.ClaimKeyName.EmailAddress, value: emailAddress);
 
 			claims.Add(item: claim);
 		}
@@ -316,7 +317,7 @@ public class LoginModel :
 		if (string.IsNullOrWhiteSpace(value: cellPhoneNumber) == false)
 		{
 			claim = new System.Security.Claims.Claim(type: Infrastructure
-				.Security.Constants.CellPhoneNumberClaimKeyName, value: cellPhoneNumber);
+				.Security.Constants.ClaimKeyName.CellPhoneNumber, value: cellPhoneNumber);
 
 			claims.Add(item: claim);
 		}
@@ -324,7 +325,7 @@ public class LoginModel :
 		if (string.IsNullOrWhiteSpace(value: ViewModel.Username) == false)
 		{
 			claim = new System.Security.Claims.Claim(type:
-				Infrastructure.Security.Constants.UsernameClaimKeyName, value: ViewModel.Username);
+				Infrastructure.Security.Constants.ClaimKeyName.Username, value: ViewModel.Username);
 
 			claims.Add(item: claim);
 		}
@@ -334,7 +335,7 @@ public class LoginModel :
 
 		var claimsIdentity =
 			new System.Security.Claims.ClaimsIdentity(claims: claims,
-			authenticationType: Infrastructure.Security.Constants.DefaultScheme);
+			authenticationType: Infrastructure.Security.Constants.Scheme.Default);
 
 		var claimsPrincipal =
 			new System.Security.Claims
@@ -346,8 +347,9 @@ public class LoginModel :
 			IsPersistent = ViewModel.RememberMe,
 		};
 
-		await HttpContext.SignInAsync(scheme: Infrastructure.Security.Constants
-			.DefaultScheme, principal: claimsPrincipal, properties: authenticationProperties);
+		await HttpContext.SignInAsync
+			(scheme: Infrastructure.Security.Constants.Scheme.Default,
+			principal: claimsPrincipal, properties: authenticationProperties);
 
 		if (string.IsNullOrWhiteSpace(value: ViewModel.ReturnUrl))
 		{

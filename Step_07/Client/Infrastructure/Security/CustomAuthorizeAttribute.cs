@@ -53,7 +53,7 @@ public class CustomAuthorizeAttribute : System.Attribute,
 		{
 			context.Result = new Microsoft
 				.AspNetCore.Mvc.ChallengeResult
-				(authenticationScheme: Constants.DefaultScheme);
+				(authenticationScheme: Constants.Scheme.Default);
 
 			return;
 		}
@@ -92,7 +92,7 @@ public class CustomAuthorizeAttribute : System.Attribute,
 		{
 			context.Result = new Microsoft
 				.AspNetCore.Mvc.ChallengeResult
-				(authenticationScheme: Constants.DefaultScheme);
+				(authenticationScheme: Constants.Scheme.Default);
 
 			return;
 		}

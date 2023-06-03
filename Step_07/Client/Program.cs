@@ -14,10 +14,10 @@ builder.Services
 
 builder.Services
 	.AddAuthentication(defaultScheme:
-		Infrastructure.Security.Constants.DefaultScheme)
+		Infrastructure.Security.Constants.Scheme.Default)
 
 	.AddCookie(authenticationScheme:
-		Infrastructure.Security.Constants.DefaultScheme)
+		Infrastructure.Security.Constants.Scheme.Default)
 	;
 
 // **************************************************

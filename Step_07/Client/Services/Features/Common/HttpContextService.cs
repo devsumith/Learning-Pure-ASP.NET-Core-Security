@@ -4,7 +4,8 @@ namespace Services.Features.Common;
 
 public class HttpContextService : object
 {
-	public HttpContextService(Microsoft.AspNetCore.Http
+	public HttpContextService
+		(Microsoft.AspNetCore.Http
 		.IHttpContextAccessor httpContextAccessor) : base()
 	{
 		HttpContextAccessor = httpContextAccessor;
